@@ -18,15 +18,8 @@ function AddFoodForm(props) {
   }
 
   function addFood() {
-    const clone = [...users];
-    clone.unshift({
-      name: form.name,
-      calories: Number(form.calories),
-      image: form.image,
-      servings: Number(form.servings),
-    });
-    setUsers(clone);
-    console.log(props.food);
+    const clone = [form, ...props.food];
+    props.menu(clone);
   }
 
   return (

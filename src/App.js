@@ -5,11 +5,11 @@ import AddFoodForm from './components/AddFoodForm';
 import { useState } from 'react';
 
 function App() {
-  const [menu, setMenu] = useState(foods);
+  const [menu, setMenu] = useState([...foods]);
   return (
     <div className="App">
       <div>
-        <AddFoodForm food={menu} />
+        <AddFoodForm food={menu} menu={setMenu} />
 
         <Button> Hide Form / Add New Food </Button>
         {/* Display Search component here */}
@@ -18,7 +18,12 @@ function App() {
           {menu.map((currentElement, index) => {
             return (
               <>
-                <FoodBox food={currentElement} index={index} menu={setMenu} />
+                <FoodBox
+                  food={currentElement}
+                  index={index}
+                  setMenu={setMenu}
+                  menu={menu}
+                />
               </>
             );
           })}
